@@ -49,4 +49,23 @@ jobs:
 
     - name: Gitleaks Code Scan
       run: gitleaks detect source . -r gitleaks-report.json -f json
+
+  test:
+    # It refers to the shared runner VM provided by GitHub
+    runs-on: ubuntu-latest
+
+    steps:
+    # On runner, it creates a local copy of the repo and checkout the code
+    - uses: actions/checkout@v4
+    - name: Set up JDK 17
+    # Here, set-up env for JDK
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+    - name: Unit Test cases
+      run: mvn test
+
+    # Sonar Qube Analysis
       
