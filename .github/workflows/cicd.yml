@@ -3,7 +3,9 @@ name: CI-CD Pipeline
 on:
   push:
     branches: [ "master" ]
-
+    
+permissions:
+  contents: write
 jobs:
   compile:
     # It refers to the shared runner VM provided by GitHub
