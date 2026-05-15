@@ -27,7 +27,8 @@ jobs:
   security-check:
     # It refers to the shared runner VM provided by GitHub
     runs-on: ubuntu-latest
-
+    needs: compile
+    
     steps:
     # On runner, it creates a local copy of the repo and checkout the code
     - uses: actions/checkout@v4
